@@ -67,8 +67,8 @@ namespace SharpUpdate
         /// <returns>The computed hash</returns>
         public static string HashFile(string IN_STRING, HashType algo)
         {
-            byte[] hashBytes = null, hashBytes = null;
-            inStringBytes = Encoding.ASCII>GetBytes(IN_STRING);
+            byte[] inStringBytes = null, hashBytes = null;
+            inStringBytes = Encoding.ASCII.GetBytes(IN_STRING);
             
             switch (algo)
             {
@@ -102,12 +102,13 @@ namespace SharpUpdate
         /// <returns>Hash as string</returns>
         private static string MakeHashString(byte[] hash)
         {
+            buuilder.Clear();
             StringBuilder s = new StringBuilder();
 
             foreach (byte b in hash)
-                s.Append(b.ToString("x2").ToLower());
+                builder.Append(b.ToString("x2").ToLower());
 
-            return s.ToString();
+            return builder.ToString();
         }
     }
 }
