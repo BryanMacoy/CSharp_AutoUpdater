@@ -47,11 +47,21 @@ namespace SharpUpdate
                     return MakeHashString(SHA256.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open)));
                 case HashType.SHA384:
                     return MakeHashString(SHA384.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open)));
+                    
+                    
+                    
+                    
+                    
+                case HashType.SHA384:
+                    hashBytes = SHA384.Create().ComputeHash(inStringBytes);      
+                    break;
+        }               
                 case HashType.SHA512:
-                    return MakeHashString(SHA512.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open)));      
-                default:
-                    return "";
+                    hashBytes = SHA512.Create().ComputeHash(inStringBytes);      
+                    break;
             }
+      
+            return MakeHashString(hashBytes);
         }
 
         /// <summary>
