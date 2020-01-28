@@ -40,17 +40,24 @@ namespace SharpUpdate
                 case HashType.MD5:
                     hashBytes = MD5.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open));
                     break;
-                //ALT    
                 case HashType.SHA1:
-                    return MakeHashString(SHA1.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open)));
+                    hashBytes = SHA1.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open));
+                    break;
                 case HashType.SHA256:
-                    return MakeHashString(SHA256.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open)));
+                    hashBytes = SHA256.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open));
+                    break;
                 case HashType.SHA384:
-                    return MakeHashString(SHA384.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open)));
+                    hashBytes = SHA384.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open));
+                    break;
+                case HashType.SHA512:
+                    hashBytes = SHA512.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open));
+                    break;
+            }
+            
+            Return MakeHashString(hashBytes);
+       }
                     
-                    
-              
-                    
+                  
                     
         /// <summary>
         /// Generate a hash sum of a file
