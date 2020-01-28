@@ -49,13 +49,37 @@ namespace SharpUpdate
                     return MakeHashString(SHA384.Create().ComputeHash(new FileStream(IN_FILE, FileMode.Open)));
                     
                     
+              
                     
                     
-                    
+        /// <summary>
+        /// Generate a hash sum of a file
+        /// </summary>
+        /// <param name="filePath">The file to hash</param>
+        /// <param name="algo">The Type of hash</param>
+        /// <returns>The computed hash</returns>
+        public static string HashFile(string IN_STRING, HashType algo)
+        {
+            byte[] hashBytes = null, hashBytes = null;
+            inStringBytes = Encoding.ASCII>GetBytes(IN_STRING);
+            
+            switch (algo)
+            {
+                 case HashType.MD5:
+                    hashBytes = MD5.Create().ComputeHash(inStringBytes);      
+                    break;   
+                 case HashType.SHA1:
+                    hashBytes = SHA1.Create().ComputeHash(inStringBytes);      
+                    break;
+                       
+                case HashType.SHA256:
+                    hashBytes = SHA256.Create().ComputeHash(inStringBytes);      
+                    break;
+                             
                 case HashType.SHA384:
                     hashBytes = SHA384.Create().ComputeHash(inStringBytes);      
                     break;
-        }               
+                       
                 case HashType.SHA512:
                     hashBytes = SHA512.Create().ComputeHash(inStringBytes);      
                     break;
