@@ -93,7 +93,7 @@ namespace SupportSharpUpdate
             if (this.update.IsNewerThan(this.programInfo.ApplicationAssembly.GetName().Version))
             {
                 // Add dialog here to check if you want to download
-                this.acceptUpdateForm = new AcceptupdateForm(this.programInfo, this.update);
+                this.acceptUpdateForm = new AcceptUpdateForm(this.programInfo, this.update);
             }
         }
     }
